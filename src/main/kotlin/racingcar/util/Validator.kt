@@ -1,10 +1,9 @@
 package racingcar.util
 
-const val MIN_ATTEMPT = 1
-const val MIN_CAR_COUNT = 2
-const val MAX_CAR_LENGTH = 5
-
 object Validator {
+    private const val MIN_ATTEMPT = 1
+    private const val MIN_CAR_COUNT = 2
+    private const val MAX_CAR_LENGTH = 5
     fun validateCar(input: List<String>) {
         validateCount(input)
         validateDuplicate(input)
@@ -20,19 +19,19 @@ object Validator {
     }
 
     private fun validateCount(input: List<String>) {
-        require(input.size < MIN_CAR_COUNT) {
+        require(input.size > MIN_CAR_COUNT) {
             Error.COUNT_ERROR.getMessage()
         }
     }
 
     private fun validateDuplicate(input: List<String>) {
-        require(input.distinct().size != input.size) {
+        require(input.distinct().size == input.size) {
             Error.DUPLICATE_ERROR.getMessage()
         }
     }
 
     private fun validateLength(input: String) {
-        require(input.length > MAX_CAR_LENGTH) {
+        require(input.length <= MAX_CAR_LENGTH) {
             Error.LENGTH_ERROR.getMessage()
         }
     }
