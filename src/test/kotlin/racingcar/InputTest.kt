@@ -29,6 +29,12 @@ class InputTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("pobi,pobi", "1") }
         }
     }
+    @Test
+    fun `자동차는 두 대 이상 있어야한다`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi", "1") }
+        }
+    }
     public override fun runMain() {
         main()
     }
