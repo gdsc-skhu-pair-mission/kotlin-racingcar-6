@@ -20,6 +20,7 @@ class Output {
     }
 
     fun printResultMessage() {
+        println()
         println(RESULT_MESSAGE)
     }
 
