@@ -35,6 +35,12 @@ class InputTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("pobi", "1") }
         }
     }
+    @Test
+    fun `게임 횟수 입력에 대한 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi,woni", "-1") }
+        }
+    }
     public override fun runMain() {
         main()
     }
