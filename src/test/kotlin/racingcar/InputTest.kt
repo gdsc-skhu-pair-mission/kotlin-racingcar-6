@@ -8,6 +8,7 @@ import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 import racingcar.model.Car
+import racingcar.view.InputView
 
 class InputTest : NsTest() {
     @ParameterizedTest
@@ -17,16 +18,18 @@ class InputTest : NsTest() {
         Assertions.assertNotNull(car)
         Assertions.assertEquals(participant, car.name)
     }
-    @Test
-    fun `참여자의 이름은 5자 이하야한다`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("pobi,javaii", "1") }
+    @ParameterizedTest
+    @ValueSource(strings = ["pobiiii", "woniii"])
+    fun `참여자의 이름은 5자 이하야 한다`(input: String) {
+        Assertions.assertThrows(IllegalArgumentException::class.java) {
+            Car(name = input)
         }
     }
-    @Test
-    fun `자동차의 이름은 중복될 수 없다`() {
-        assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("pobi,pobi", "1") }
+    @ParameterizedTest
+    @ValueSource(strings = ["pobi,pobi"])
+    fun `자동차의 이름은 중복될 수 없다`(input: String) {
+        Assertions.assertThrows(IllegalArgumentException::class.java) {
+            Car(name = input)
         }
     }
     @Test
@@ -35,10 +38,11 @@ class InputTest : NsTest() {
             assertThrows<IllegalArgumentException> { runException("pobi", "1") }
         }
     }
-    @Test
-    fun `게임 횟수 입력에 대한 예외 처리`() {
+    @ParameterizedTest
+    @ValueSource(strings = ["0", "woni"])
+    fun `게임 횟수는 정수여야한다`() {
         assertSimpleTest {
-            assertThrows<IllegalArgumentException> { runException("pobi,woni", "-1") }
+            assertThrows<IllegalArgumentException> { runException("pobi", "woni") }
         }
     }
     public override fun runMain() {
