@@ -6,7 +6,7 @@ const val MESSAGE_OF_INPUT_GAME_TIME: String = "시도할 횟수는 몇 회인�
 const val MINIMUM_NUMBER_OF_CARS: Int = 2
 
 
-class InputView {
+object InputView {
     fun inputCarNames(): List<String> {
         println(MESSAGE_OF_INPUT_CAR_NAMES)
         val cars: List<String> = Console.readLine().split(",")
