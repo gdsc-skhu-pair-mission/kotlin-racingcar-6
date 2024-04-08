@@ -19,7 +19,7 @@ object Validator {
     }
 
     private fun validateCount(input: List<String>) {
-        require(input.size > MIN_CAR_COUNT) {
+        require(input.size >= MIN_CAR_COUNT) {
             Error.COUNT_ERROR.getMessage()
         }
     }
