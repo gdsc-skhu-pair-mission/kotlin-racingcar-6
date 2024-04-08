@@ -43,9 +43,8 @@ class ApplicationTest : NsTest() {
             Car(name = input)
         }
     }
-    @ParameterizedTest
-    @ValueSource(strings = ["pobi,pobi"])
-    fun `자동차의 이름은 중복될 수 없다`(input: String) {
+    @Test
+    fun `자동차의 이름은 중복될 수 없다`() {
         camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,pobi", "1") }
         }
