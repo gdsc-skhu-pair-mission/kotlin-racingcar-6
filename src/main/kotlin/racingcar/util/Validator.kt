@@ -4,6 +4,7 @@ object Validator {
     private const val MIN_ATTEMPT = 1
     private const val MIN_CAR_COUNT = 2
     private const val MAX_CAR_LENGTH = 5
+
     fun validateCar(input: List<String>) {
         validateCount(input)
         validateDuplicate(input)
