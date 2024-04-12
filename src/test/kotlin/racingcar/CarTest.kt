@@ -19,4 +19,3 @@ class CarTest {
         assertEquals(0,car.position)
     }
 }
-
