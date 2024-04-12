@@ -10,18 +10,26 @@ class Controller(
     private val input: Input,
     private val output: Output,
 ) {
-    private val cars = listOf<Car>()
+ //   private val cars = listOf<Car>()
     private lateinit var racing: Racing
 
     fun play() {
         prepareRacing()
+        initRacing()
+    //    input.getCars()
         processRacing()
         showWinners()
     }
 
     private fun prepareRacing() {
         output.printStartMessage()
+    }
 
+    private fun initRacing(){
+        val carNames = input.getCars()
+        val cars = carNames.map { Car(it) }
+        print(cars)
+        racing = Racing(cars)
     }
 
     private fun processRacing() {
@@ -35,8 +43,8 @@ class Controller(
     }
 
     private fun getWinners(): List<String> {
-    val maxPosition :Int = cars.maxOf { it.position }
-        return cars.filter { it.position == maxPosition }.map { it.name }
+        val maxPosition: Int = racing.getCurrentRacingStates().maxOf { it.position }
+        return racing.getCurrentRacingStates().filter { it.position == maxPosition }.map { it.name }
     }
 
     private fun showRoundResult() {
