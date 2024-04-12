@@ -20,37 +20,43 @@ object Validator {
 
     private fun validateCount(input: List<String>) {
         require(input.size >= MIN_CAR_COUNT) {
-            Error.COUNT_ERROR.getMessage()
+            val countError = CountError()
+            countError
         }
     }
 
     private fun validateDuplicate(input: List<String>) {
         require(input.distinct().size == input.size) {
-            Error.DUPLICATE_ERROR.getMessage()
+            val duplicateError = DuplicateError()
+            duplicateError
         }
     }
 
     private fun validateLength(input: String) {
         require(input.length <= MAX_CAR_LENGTH) {
-            Error.LENGTH_ERROR.getMessage()
+            val lengthError = LengthError()
+            lengthError
         }
     }
 
     private fun validateNull(input: String) {
         require(input.trim().isNotEmpty()) {
-            Error.INPUT_ERROR.getMessage()
+            val inputError = InputError()
+            inputError
         }
     }
 
     private fun validateNumber(input: String) {
         require(input.all { it.isDigit() }) {
-            Error.ATTEMPTS_ERROR.getMessage()
+            val attemptsError = AttemptsError()
+            attemptsError
         }
     }
 
     private fun validateValue(input: String) {
         require(input.toInt() >= MIN_ATTEMPT) {
-            Error.VALUE_ERROR.getMessage()
+            val valueError = ValueError()
+            valueError
         }
     }
 }

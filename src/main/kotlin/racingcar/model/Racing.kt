@@ -13,14 +13,9 @@ class Racing(
     }
 
     fun playRound() {
-        cars.forEach { car ->
-            car.moveForward(generateRandomNumber() >= MIN_FORWARD_VALUE)
-        }
-    }
+        cars.forEach { car -> car.moveForward(generateRandomNumber()>= MIN_FORWARD_VALUE)
 
-    fun getWinners(): List<String> {
-        val maxPosition = cars.maxOf { it.position }
-        return cars.filter { it.position == maxPosition }.map { it.name }
+          }
     }
 
     fun getCurrentRacingStates(): List<RacingDto> {

@@ -9,16 +9,16 @@ class Input {
         const val DELIMITER = ","
     }
 
-    private fun getUserInput(): String = Console.readLine()
+    private fun getUserInputAsString(): String = Console.readLine()
 
     fun getCars(): List<String> {
-        val cars = getUserInput().split(DELIMITER)
+        val cars = getUserInputAsString().split(DELIMITER)
         validateCar(cars)
         return cars
     }
 
     fun getAttempt(): Int {
-        val attempt = getUserInput()
+        val attempt = getUserInputAsString()
         validateAttempt(attempt)
         return attempt.toInt()
     }

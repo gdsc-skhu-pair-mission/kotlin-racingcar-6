@@ -2,7 +2,7 @@ package racingcar.model
 
 class Car(
     private val _name: String,
-    private var _position: Int = ZERO
+    private val _position: Int = ZERO
 ) {
     companion object {
         const val ZERO = 0
@@ -11,12 +11,13 @@ class Car(
     val name: String
         get() = _name
 
-    val position: Int
+    var position: Int
         get() = _position
+        set(value) {}
 
-    fun moveForward(shouldMove: Boolean) {
+   fun moveForward(shouldMove: Boolean) {
         if (shouldMove) {
-            _position++
+            position++
         }
     }
 }
