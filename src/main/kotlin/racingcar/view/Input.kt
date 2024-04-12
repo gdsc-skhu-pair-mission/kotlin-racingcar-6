@@ -4,10 +4,8 @@ import camp.nextstep.edu.missionutils.Console
 import racingcar.util.Validator.validateAttempt
 import racingcar.util.Validator.validateCar
 
-class Input {
-    companion object {
-        const val DELIMITER = ","
-    }
+object Input {
+    private const val DELIMITER = ","
 
     private fun getUserInput(): String = Console.readLine()
 
