@@ -16,7 +16,6 @@ class Controller(
     fun play() {
         prepareRacing()
         initRacing()
-    //    input.getCars()
         processRacing()
         showWinners()
     }
@@ -28,8 +27,12 @@ class Controller(
     private fun initRacing(){
         val carNames = input.getCars()
         val cars = carNames.map { Car(it) }
-        print(cars)
         racing = Racing(cars)
+    }
+
+    fun getWinners(): List<String> {
+        val maxPosition: Int = racing.getCurrentRacingStates().maxOf { it.position }
+        return racing.getCurrentRacingStates().filter { it.position == maxPosition }.map { it.name }
     }
 
     private fun processRacing() {
@@ -40,11 +43,6 @@ class Controller(
             racing.playRound()
             showRoundResult()
         }
-    }
-
-    private fun getWinners(): List<String> {
-        val maxPosition: Int = racing.getCurrentRacingStates().maxOf { it.position }
-        return racing.getCurrentRacingStates().filter { it.position == maxPosition }.map { it.name }
     }
 
     private fun showRoundResult() {

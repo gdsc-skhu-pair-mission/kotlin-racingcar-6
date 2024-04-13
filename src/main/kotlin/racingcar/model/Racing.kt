@@ -14,7 +14,8 @@ class Racing(//Racing에 빈칸으로 들어가는거 같음 cars를 넣어주�
     }
 
     fun playRound() {
-        cars.forEach { car -> car.moveForward(generateRandomNumber() >= MIN_FORWARD_VALUE)
+        cars.forEach { car ->
+            car.moveForward(generateRandomNumber() >= MIN_FORWARD_VALUE)
         //    print(generateRandomNumber())
           }
     }
