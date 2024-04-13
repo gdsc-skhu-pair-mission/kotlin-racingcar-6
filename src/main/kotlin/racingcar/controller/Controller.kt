@@ -1,6 +1,5 @@
 package racingcar.controller
 
-import racingcar.dto.RacingDto
 import racingcar.model.Car
 import racingcar.model.Racing
 import racingcar.view.Input
