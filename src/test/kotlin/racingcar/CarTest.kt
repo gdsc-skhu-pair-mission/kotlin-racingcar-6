@@ -7,14 +7,14 @@ import racingcar.model.Car
 class CarTest {
     @Test
     fun `전진하는 경우`() {
-        val car = Car("testCar",0)
+        val car = Car("testCar")
         car.moveForward(true)
         assertEquals(1,car.position)
 
     }
     @Test
     fun `전진하는 않는 경우`() {
-        val car = Car("testCar",0)
+        val car = Car("testCar")
         car.moveForward(false)
         assertEquals(0,car.position)
     }
