@@ -5,6 +5,6 @@ import racingcar.view.Input
 import racingcar.view.Output
 
 fun main() {
-    val controller = Controller(Input(), Output())
+    val controller = Controller()
     controller.play()
 }

@@ -5,43 +5,34 @@ import racingcar.model.Racing
 import racingcar.view.Input
 import racingcar.view.Output
 
-class Controller(
-    private val input: Input,
-    private val output: Output
-) {
-    private lateinit var racing: Racing
-
+class Controller {
     fun play() {
-        prepareRacing()
-        processRacing()
-        showWinners()
+        Output.printStartMessage()
+        val cars = Input.getCars()
+        val racing = Racing(cars.map { Car(it) })
+        processRacing(racing)
+        showWinners(racing)
     }
 
-    private fun prepareRacing() {
-        output.printStartMessage()
-        val cars = input.getCars()
-        racing = Racing(cars.map { Car(it) })
-    }
-
-    private fun processRacing() {
-        output.printAttemptMessage()
-        val attempts = input.getAttempt()
-        output.printResultMessage()
+    private fun processRacing(racing: Racing) {
+        Output.printAttemptMessage()
+        val attempts = Input.getAttempt()
+        Output.printResultMessage()
         repeat(attempts) {
             racing.playRound()
-            showRoundResult()
+            showRoundResult(racing)
         }
     }
 
-    private fun showRoundResult() {
+    private fun showRoundResult(racing: Racing) {
         racing.getCurrentRacingStates().forEach { racingDto ->
-            output.printPosition(racingDto.name, racingDto.position)
+            Output.printPosition(racingDto.name, racingDto.position)
         }
         println()
     }
 
-    private fun showWinners() {
+    private fun showWinners(racing: Racing) {
         val winners = racing.getWinners()
-        output.printWinner(winners)
+        Output.printWinner(winners)
     }
 }
