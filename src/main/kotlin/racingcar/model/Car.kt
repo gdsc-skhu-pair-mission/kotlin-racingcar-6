@@ -5,7 +5,7 @@ class Car(
     private var _position: Int = ZERO
 ) {
     companion object {
-        const val ZERO = 0
+        private const val ZERO = 0
     }
 
     val name: String
