@@ -9,12 +9,11 @@ class Racing(
     companion object {
         private const val MIN_VALUE = 0
         private const val MAX_VALUE = 9
-        private const val MIN_FORWARD_VALUE = 4
     }
 
     fun playRound() {
         cars.forEach { car ->
-            car.moveForward(generateRandomNumber() >= MIN_FORWARD_VALUE)
+            car.moveForward(generateRandomNumber())
         }
     }
 

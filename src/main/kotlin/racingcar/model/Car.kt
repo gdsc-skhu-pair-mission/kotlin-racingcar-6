@@ -6,6 +6,7 @@ class Car(
 ) {
     companion object {
         private const val ZERO = 0
+        private const val MIN_FORWARD_VALUE = 4
     }
 
     val name: String
@@ -14,8 +15,8 @@ class Car(
     val position: Int
         get() = _position
 
-    fun moveForward(shouldMove: Boolean) {
-        if (shouldMove) {
+    fun moveForward(randomNumber: Int) {
+        if (randomNumber >= MIN_FORWARD_VALUE) {
             _position++
         }
     }
