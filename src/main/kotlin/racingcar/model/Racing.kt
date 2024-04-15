@@ -7,9 +7,9 @@ class Racing(
     private val cars: List<Car>
 ) {
     companion object {
-        const val MIN_VALUE = 0
-        const val MAX_VALUE = 9
-        const val MIN_FORWARD_VALUE = 4
+        private const val MIN_VALUE = 0
+        private const val MAX_VALUE = 9
+        private const val MIN_FORWARD_VALUE = 4
     }
 
     fun playRound() {
